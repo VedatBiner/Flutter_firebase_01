@@ -16,10 +16,15 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String ad, id, kategori;
-  double fiyat;
+  late String ad, id, kategori;
+  late double fiyat;
   @override
   Widget build(BuildContext context) {
+    ButtonStyle style = ElevatedButton.styleFrom(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+    );
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -108,6 +113,42 @@ class _MyAppState extends State<MyApp> {
                   },
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.only(top: 16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      style: style,
+                      child: const Text("Ekle"),
+                      onPressed: () {
+                        veriEkle();
+                      },
+                    ),
+                    ElevatedButton(
+                      style: style,
+                      child: const Text("Oku"),
+                      onPressed: () {
+                        veriOku();
+                      },
+                    ),
+                    ElevatedButton(
+                      style: style,
+                      child: const Text("Güncelle"),
+                      onPressed: () {
+                        veriGuncelle();
+                      },
+                    ),
+                    ElevatedButton(
+                      style: style,
+                      child: const Text("Sil"),
+                      onPressed: () {
+                        veriSil();
+                      },
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
@@ -129,6 +170,22 @@ class _MyAppState extends State<MyApp> {
 
   void urunFiyatiAl(String urunFiyati) {
     fiyat = double.parse(urunFiyati);
+  }
+
+  void veriEkle() {
+    print("Eklendi");
+  }
+
+  void veriOku() {
+    print("Okundu");
+  }
+
+  void veriGuncelle() {
+    print("Güncellendi");
+  }
+
+  void veriSil() {
+    print("Silindi");
   }
 }
 

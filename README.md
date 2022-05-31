@@ -4,7 +4,12 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Örnek bir Firebase Uygulaması
+Öncelikle veri giriş ekranı tasarlanıyor.
+
+Kodlama için örnek olarak videoları kullanılmıştır. 
+Aşağıdaki versiyon kullanıldığı için bazı güncel değişiklikler yapılmıştır.
+![img.png](img.png)
 
 A few resources to get you started if this is your first Flutter project:
 
