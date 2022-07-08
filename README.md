@@ -13,5 +13,5 @@ https://www.youtube.com/watch?v=E4xHTeFTGfc&list=PLLTtZhOwITSgin11j9TIQhf1EvybOx
 videoları kullanılmıştır. 
 Aşağıdaki versiyon kullanıldığı için bazı güncel değişiklikler yapılmıştır.
 
-![img.png](img.png)
+![ScreenShot](/screen_shots/img-01.png)
 

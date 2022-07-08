@@ -2,9 +2,13 @@
 Firebase Uygulaması
 Önce ekran tasarımı
  */
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -173,11 +177,41 @@ class _MyAppState extends State<MyApp> {
   }
 
   void veriEkle() {
+    final firebaseInstance = FirebaseFirestore.instance;
     print("Eklendi");
+    //veri tabanı yolu
+    DocumentReference veriYolu = firebaseInstance.collection("urunler").doc(ad);
+    // çoklu veriyi map ile göndereceğiz.
+    Map<String, dynamic> urunler = {
+      "urunAdi" : ad,
+      "urunId" : id,
+      "urunKategori" : kategori,
+      "urunFiyat" : fiyat,
+    };
+    veriYolu.set(urunler).whenComplete(() {
+      print("$ad eklendi");
+    });
   }
 
-  void veriOku() {
+  Future<void> veriOku() async {
+    final firebaseInstance = FirebaseFirestore.instance;
+    final QuerySnapshot<Map<String, dynamic>> querySnapshot = await firebaseInstance.collection("urunler").get();
+    DocumentReference veriYolu = firebaseInstance.collection("urunler").doc(ad);
     print("Okundu");
+    print(veriYolu);
+
+    // Firebase veri okuma - Hata var ?
+    /*
+    DocumentReference veriYolu = firebaseInstance.collection("urunler").doc(ad);
+
+    veriYolu.get().then((alinanVeri) {
+      print(alinanVeri.data["urunAdi"]);
+      print(alinanVeri.data["urunId"]);
+      print(alinanVeri.data["urunKategori"]);
+      print(alinanVeri.data["urunFİyat"]);
+    });
+     */
+
   }
 
   void veriGuncelle() {
@@ -192,5 +226,5 @@ class _MyAppState extends State<MyApp> {
 
 
 
-// https://www.youtube.com/watch?v=9le0wdmc4iM&list=PLLTtZhOwITSgin11j9TIQhf1EvybOxZUw&index=3&ab_channel=SanalAkademiD%C3%BCnyas%C4%B1
-// ders3 6:15 ile devam
+// https://www.udemy.com/course/15-derste-flutter-ile-firebase-kullanm-temelleri/
+// ders12 ile devam
